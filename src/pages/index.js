@@ -1,9 +1,13 @@
-import styles from '../styles/Home.module.css'
+import { useEffect } from "react";
+import { postLogin } from "../services";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-     
-    </div>
-  )
+  useEffect(() => {
+    postLogin().then((res) => {
+      console.log(res);
+    });
+  }, []);
+
+  return <div className={styles.container}></div>;
 }
