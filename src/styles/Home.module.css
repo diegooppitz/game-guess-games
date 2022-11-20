@@ -16,6 +16,19 @@
   -webkit-filter: blur(1px);
 }
 
+.blurredImg3 {
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
+.blurredImg5 {
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+}
+.blurredImg7 {
+  filter: blur(7px);
+  -webkit-filter: blur(7px);
+}
+
 .guessOptions {
   margin: 20px auto 0;
   width: 600px;
