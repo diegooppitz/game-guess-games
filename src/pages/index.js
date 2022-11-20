@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { postGame, postLogin } from "../services";
 
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const [imageURL, setImageURL] = useState('')
+
   function auth() {
     postLogin().then((res) => {
       const data = res?.data;
@@ -16,8 +18,13 @@ export default function Home() {
   }
 
   function fetchGameData() {
-    postGame().then((res) => {
-      console.log("data", res.data);
+    postGame().then(({ data }) => {
+      let url = data[0]?.artworks[0]?.url;
+      if (!url) return;
+
+      url = url.replace('t_thumb', 't_720p');
+      url = `https:${url}`
+      setImageURL(url);
     });
   }
 
@@ -25,5 +32,12 @@ export default function Home() {
     auth();
   }, []);
 
-  return <div className={styles.container}></div>;
+
+  useEffect(() => {
+    console.log("aqui", imageURL)
+  }, [imageURL]);
+
+  return <div className={styles.container}>
+    <img src="https://images.igdb.com/igdb/image/upload/t_720p/arz9r.jpg" />
+  </div>;
 }
