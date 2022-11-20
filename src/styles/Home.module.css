@@ -1,10 +1,71 @@
 .container {
-  padding: 0 2rem;
+  margin: 50px auto 0;
+  height: auto;
+  width: 60%;
 }
 
-@media (max-width: 600px) {
-  .grid {
+.title {
+  text-align: center;
+  width: 100%;
+}
+
+.gameImg {
+  width: 100%;
+  border-radius: 20px;
+  filter: blur(1px);
+  -webkit-filter: blur(1px);
+}
+
+.guessOptions {
+  margin: 20px auto 0;
+  width: 600px;
+}
+
+.guessInput {
+  padding-left: 15px;
+  font-size: 16px;
+  height: 40px;
+  width: 70%;
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 5px;
+}
+
+.guessBtn {
+  background-color: #00f;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 16px;
+  opacity: .8;
+  width: 30%;
+  height: 40px;
+}
+
+.guessBtn:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+
+  .guessOptions {
     width: 100%;
-    flex-direction: column;
+  }
+
+  .guessInput {
+    width: 100%;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .guessBtn {
+    width: 100%;
+    display: block;
   }
 }
+
+

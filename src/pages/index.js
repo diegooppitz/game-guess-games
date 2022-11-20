@@ -38,6 +38,11 @@ export default function Home() {
   }, [imageURL]);
 
   return <div className={styles.container}>
-    <img src="https://images.igdb.com/igdb/image/upload/t_720p/arz9r.jpg" />
+    <h1 className={styles.title}>Guess game</h1>
+    <img className={styles.gameImg} src="https://images.igdb.com/igdb/image/upload/t_720p/arz9r.jpg" />
+    <div className={styles.guessOptions}>
+      <input className={styles.guessInput} placeholder="Find out name of the game" />
+      <button className={styles.guessBtn}>Submit</button>
+    </div>
   </div>;
 }
