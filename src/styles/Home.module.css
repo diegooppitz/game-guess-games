@@ -10,7 +10,9 @@
 }
 
 .gameImg {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
+  display: block;
   border-radius: 20px;
   filter: blur(1px);
   -webkit-filter: blur(1px);

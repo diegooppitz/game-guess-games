@@ -53,16 +53,10 @@ export default function Home() {
   }
 
   function checkBlur() {
-    switch (blurValue) {
-      case 1:
-        return styles.blurredImg3;
-      case 2:
-        return styles.blurredImg5;
-      case 3:
-        return styles.blurredImg7;
-      default:
-        return null;
-    }
+    if (blurValue === 0) return styles.blurredImg7;
+    else if (blurValue === 1) return styles.blurredImg5;
+    else if (blurValue === 2) return styles.blurredImg3;
+    else return null;
   }
 
   useEffect(() => {
