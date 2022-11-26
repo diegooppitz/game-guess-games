@@ -46,6 +46,20 @@
   border-radius: 5px;
 }
 
+.guessSuggestions {
+  min-height: 100px;
+  max-height: 200px;
+  width: 70%;
+  height: auto;
+  overflow: auto;
+  border: solid 1px #ccc;
+  background-color: #fff;
+}
+
+.suggestionItem {
+  padding: 10px 15px;
+}
+
 .guessBtn {
   background-color: #00f;
   border: none;

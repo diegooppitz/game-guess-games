@@ -4,9 +4,14 @@ import { postGame, postLogin, postSearchGame } from "../services";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const [imageURL, setImageURL] = useState('')
-  const [searchValue, setSearchValue] = useState('')
-  const [blurValue, setBlurValue] = useState(0)
+  const [imageURL, setImageURL] = useState('');
+
+  const [searchValue, setSearchValue] = useState('');
+  const [searchResults, setSearchResults] = useState();
+  
+  const [blurValue, setBlurValue] = useState(0);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
 
   // block duplicated requests
   let loadedToken = false;
@@ -41,9 +46,14 @@ export default function Home() {
   }
 
   function searchGame() {
-    postSearchGame(searchValue).then((res) => {
+    postSearchGame(searchValue).then(({ data }) => {
       setBlurValue(blurValue + 1);
-      console.log(res)
+      if(!data || data.length === 0) return;
+      console.log(data);
+
+      setSearchResults(data);
+      console.log("aqui")
+      setShowSuggestions(true);
     })
   }
 
@@ -59,17 +69,25 @@ export default function Home() {
     else return null;
   }
 
+
   useEffect(() => {
     auth();
   }, []);
-
 
   return <div className={styles.container}>
     <h1 className={styles.title}>Guess game</h1>
     <img className={`${styles.gameImg} ${checkBlur()}`} src={imageURL} />
     <div className={styles.guessOptions}>
       <input className={styles.guessInput} onChange={changeGuessInput} placeholder="Find out name of the game" />
-      <button onClick={searchGame} className={styles.guessBtn}>Submit</button>
+      <button onClick={searchGame} className={styles.guessBtn}>Search</button>
+
+      {showSuggestions && (
+        <div className={styles.guessSuggestions}>
+          {searchResults.map((item) => (
+            <div key={item.id} className={styles.suggestionItem}>{item.name}</div>
+          ))}
+        </div>
+       )}
     </div>
   </div>;
 }
