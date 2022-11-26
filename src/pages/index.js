@@ -49,10 +49,8 @@ export default function Home() {
     postSearchGame(searchValue).then(({ data }) => {
       setBlurValue(blurValue + 1);
       if(!data || data.length === 0) return;
-      console.log(data);
 
       setSearchResults(data);
-      console.log("aqui")
       setShowSuggestions(true);
     })
   }
